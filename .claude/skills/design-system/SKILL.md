@@ -1,11 +1,36 @@
 ---
 name: design-system
-description: The visual design system for Leonard's Garden — color tokens, fonts, dark mode behavior, and identity details, all taken from the approved prototype. Read before writing any CSS, component styling, or theme logic.
+description: The visual design system AND the consumption contract for Leonard's Garden — color tokens, fonts, dark mode, identity details, plus the rules that ALL UI code must follow (consume system-design, never hardcode, reuse before creating). Read before writing or changing any CSS, component, page, or theme logic — and before acting on a new/updated prototype.
 ---
 
 # Design system — from the approved prototype
 
 The prototype artifact linked at the top of `docs/PRD.md` is the source of truth. This skill records the agreed tokens; when the prototype and this file disagree, the prototype wins — update this file to match.
+
+## Consumption contract (read this first, every time)
+
+This is not optional reference material — it is the contract every piece of UI work obeys.
+
+**Source-of-truth chain.** Design flows one direction; change at the highest layer that owns the thing, never patch downstream:
+
+```
+prototype artifact  →  tokens  →  atoms  →  molecules / organisms  →  pages (app/)
+   (source of truth)   (values)   (primitives)   (composed UI)        (data + assembly)
+```
+
+- A **value** (color, spacing, font, radius) changed → edit the token, never the component. Components inherit it.
+- A **look** shared by ≥2 places → it belongs in `system-design/`, not inlined in a page.
+- A **page** only does data fetching + composition. Pages import from `system-design/`; they never define reusable styling.
+
+**Reuse before you create.** Before writing any new component or style:
+
+1. Check what already exists (the component REGISTRY when present, else scan `system-design/`).
+2. If something covers ~70%+ of the need → **extend it** (add a prop/variant). Do not fork or re-implement.
+3. Only create new when nothing is close — and put it in the right layer (atom / molecule / organism), with a test.
+
+**Never hardcode.** Components consume **semantic tokens** (`var(--color-accent)`, `var(--maturity-evergreen)`), never raw hex (`#1f9e6b`) or literal font names. Raw values live only in the token files.
+
+**New or updated prototype design.** When a new artifact arrives or the prototype changes, do NOT hand-patch scattered files. Follow the reconciliation flow: fetch the artifact (read it as an artifact — never web-fetch a `claude.ai` link), diff against current tokens + components, classify each change (token value → new/changed component → layout → page composition), then apply **top-down along the chain above** and update this skill's token tables to match. Most UI updates are a single token-value change that the whole site inherits — reach for that before touching components.
 
 ## Color tokens
 
@@ -58,4 +83,4 @@ Define all colors as CSS custom properties on `:root`. Provide a full dark-mode 
 
 ## Rules
 
-Tokens over hardcoded values, always. Keep contrast accessible in both themes. Small, focused stylesheets co-located with their components.
+Tokens over hardcoded values, always. Keep contrast accessible in both themes. Small, focused stylesheets co-located with their components. Split **raw tokens** (`--green`) from **semantic tokens** (`--color-accent`, `--maturity-*`); components use only the semantic layer, so re-theming and dark mode touch one place. See the Consumption contract above — it governs every UI edit, not just new screens.
