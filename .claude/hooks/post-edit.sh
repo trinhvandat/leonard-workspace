@@ -31,6 +31,29 @@ case "$file" in
 esac
 [ -f "$file" ] || exit 0
 
+# design-lint: enforce the design-system consumption contract (no hardcoded
+# colors). Component CSS must consume semantic tokens — raw hex belongs only in
+# the token files under a `tokens/` directory. Runs before the toolchain gate
+# below because it needs only grep. Scoped to UI layers to avoid noise; surfaces
+# to Claude as feedback (exit 2) without blocking the edit.
+case "$file" in
+  *.css)
+    case "$file" in
+      */tokens/*) ;;                 # token files are where raw values live — skip
+      *system-design/*|*/app/*)
+        if hits="$(grep -nE '#[0-9a-fA-F]{3,8}\b' "$file" 2>/dev/null)"; then
+          {
+            echo "design-lint: hardcoded color in $file — consume a semantic token (var(--...)) instead."
+            echo "The design-system consumption contract forbids raw hex outside tokens/. Offending lines:"
+            printf '%s\n' "$hits"
+          } >&2
+          exit 2
+        fi
+        ;;
+    esac
+    ;;
+esac
+
 # Locate the project root (nearest package.json up from the file).
 dir="$(cd "$(dirname "$file")" && pwd)"
 root=""

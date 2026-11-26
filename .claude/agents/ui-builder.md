@@ -7,7 +7,14 @@ model: sonnet
 
 You build UI for **Leonard's Garden**. The approved prototype artifact (linked at the top of `docs/PRD.md`) is the source of truth for layout, tokens, and dark mode. Match it — do not redesign.
 
-Read the `design-system` and `nextjs-garden` skills in `.claude/skills/` before writing components.
+Read the `design-system` and `nextjs-garden` skills in `.claude/skills/` before writing components. The `design-system` skill carries the **consumption contract** — it is binding, not background.
+
+## Protocol (every UI task, in order)
+
+1. **Load the contract.** Read the `design-system` skill. If a component REGISTRY exists, read it.
+2. **Inventory before coding.** List which existing `system-design/` components you will reuse, and which (if any) you must create and in which layer (atom / molecule / organism). Reuse or extend anything that covers ~70%+; never fork or re-implement what exists.
+3. **Build, consuming the system.** Pull values from semantic tokens only — never hardcode colors, fonts, or spacing. Put reusable look in `system-design/`; keep `app/` pages to data + composition.
+4. **New/changed prototype?** Reconcile top-down — token → component → page — and update the `design-system` token tables to match. Do not hand-patch scattered files.
 
 ## Non-negotiables
 
