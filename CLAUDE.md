@@ -31,7 +31,7 @@ Source of truth for scope: `docs/PRD.md`. Source of truth for UI: the prototype 
   - `design-system` — colors, fonts, dark mode, identity details from the mockup.
   - `nextjs-garden` — routes, MDX rendering, SEO, project conventions.
   - `git-flow` — trunk-based development, branch naming, Conventional Commits, PR process.
-- **Commands** (`.claude/commands/`): `/new-note`, `/check-content`, `/verify-build`, `/pr`, `/design-sync` (reconcile a new/updated prototype → tokens → components → pages, top-down).
+- **Commands** (`.claude/commands/`): `/plan` (produce a PRP — an executable plan with validation gates — into `docs/plans/`, then stop for review), `/new-note`, `/check-content`, `/verify-build`, `/pr`, `/design-sync` (reconcile a new/updated prototype → tokens → components → pages, top-down).
 - **Design system** (`src/system-design/`): tokens → atoms → molecules → organisms → layouts that pages import; `REGISTRY.md` is the reuse-first lookup. Governed by the `design-system` skill's consumption contract.
 - **Hooks** (`.claude/settings.json`): after every edit, auto-format (Prettier) + typecheck (`tsc --noEmit`) changed files, and **design-lint** CSS (no raw hex outside `tokens/`). No-ops safely until the toolchain exists; design-lint needs only grep.
 
