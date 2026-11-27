@@ -24,6 +24,10 @@
   --type-size-h3: 21px;
   --type-leading-h3: 1.3;
 
+  /* Stat number (StatsStrip) — extra-bold display numeral */
+  --type-size-stat: clamp(26px, 5vw, 34px);
+  --type-leading-stat: 1;
+
   /* Body copy */
   --type-size-body: 18px;
   --type-leading-body: 1.62;

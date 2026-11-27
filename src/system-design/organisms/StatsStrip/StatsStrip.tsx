@@ -28,7 +28,7 @@ export function StatsStrip({ stats }: StatsStripProps) {
             <Text
               as="p"
               variant="display"
-              size="h2"
+              size="stat"
               className={[styles.value, tile.tone].filter(Boolean).join(" ")}
             >
               {tile.value}
