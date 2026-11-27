@@ -24,9 +24,21 @@
   --type-size-h3: 21px;
   --type-leading-h3: 1.3;
 
+  /* Stat number (StatsStrip) — extra-bold display numeral */
+  --type-size-stat: clamp(26px, 5vw, 34px);
+  --type-leading-stat: 1;
+
   /* Body copy */
   --type-size-body: 18px;
   --type-leading-body: 1.62;
+
+  /* Small serif label (e.g. the hero intro card's name) */
+  --type-size-name: 16px;
+  --type-leading-name: 1.5;
+
+  /* Pull-quote body (e.g. AsideExcerpt) — body family, slightly smaller than --type-size-body */
+  --type-size-quote: 16.5px;
+  --type-leading-quote: 1.62;
 
   /* Meta / mono */
   --type-size-meta: 12px;

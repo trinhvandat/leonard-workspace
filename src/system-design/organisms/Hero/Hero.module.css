@@ -1,0 +1,75 @@
+.root {
+  padding-block: 56px 40px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-attention-ink);
+  letter-spacing: 0.01em;
+  margin: 0 0 16px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-attention);
+}
+
+.title {
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  text-wrap: balance;
+}
+
+.lede {
+  color: var(--text-secondary);
+  max-width: 54ch;
+  margin: 0 0 32px;
+}
+
+.introCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 13px;
+  flex-shrink: 0;
+  font-family: var(--type-family-display);
+  font-weight: 700;
+  font-size: 21px;
+  color: var(--surface-page);
+  background: linear-gradient(142deg, var(--color-accent), var(--color-highlight));
+}
+
+.name {
+  color: var(--text-primary);
+  font-weight: 500;
+  margin: 0 0 2px;
+}
+
+.role,
+.stack {
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+@media (max-width: 640px) {
+  .introCard {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}

@@ -2,7 +2,7 @@ import type { ElementType, ReactNode } from "react";
 import styles from "./Text.module.css";
 
 type TextVariant = "display" | "body" | "mono";
-type TextSize = "h1" | "h2" | "h3" | "body" | "meta";
+type TextSize = "h1" | "h2" | "h3" | "stat" | "body" | "name" | "quote" | "meta";
 
 interface TextProps {
   /** Element to render (defaults based on variant). */

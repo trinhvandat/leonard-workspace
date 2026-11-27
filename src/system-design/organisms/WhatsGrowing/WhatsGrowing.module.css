@@ -1,0 +1,14 @@
+.root {
+  padding-block: 32px;
+}
+
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.browseAll {
+  display: inline-flex;
+  margin-top: 18px;
+}
