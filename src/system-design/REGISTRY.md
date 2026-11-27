@@ -14,9 +14,9 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 
 | Token file | Owns | Status |
 |---|---|---|
-| `tokens.css` | raw + semantic: color, spacing, radius, z-index | planned |
-| `themes.css` | dark-mode overrides (`prefers-color-scheme` + `[data-theme]`) | planned |
-| `typography.css` | font families (display/serif/mono) + type scale | planned |
+| `tokens.css` | raw + semantic: color, spacing, radius, z-index | built |
+| `themes.css` | dark-mode overrides (`prefers-color-scheme` + `[data-theme]`) | built |
+| `typography.css` | font families (display/serif/mono) + type scale | built |
 
 ## Atoms (`atoms/`)
 

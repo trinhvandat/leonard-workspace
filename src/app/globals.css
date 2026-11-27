@@ -1,8 +1,11 @@
 /*
- * Phase 0 base reset only. Color, typography, and dot-grid tokens are added
- * by the token layer in Phase 1 (src/system-design/tokens/*), which this file
- * will @import. No raw values live here — this stylesheet consumes tokens.
+ * Phase 0 base reset, plus the Phase 1 token layer (src/system-design/tokens/*).
+ * No raw values live here — this stylesheet consumes semantic tokens only.
  */
+
+@import "../system-design/tokens/tokens.css";
+@import "../system-design/tokens/themes.css";
+@import "../system-design/tokens/typography.css";
 
 *,
 *::before,
@@ -17,6 +20,11 @@ html {
 body {
   margin: 0;
   min-height: 100dvh;
+  background: var(--surface-dot-grid);
+  color: var(--text-primary);
+  font-family: var(--type-family-body);
+  font-size: var(--type-size-body);
+  line-height: var(--type-leading-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -28,4 +36,10 @@ svg {
 
 a {
   color: inherit;
+}
+
+:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+  border-radius: var(--focus-ring-radius);
 }
