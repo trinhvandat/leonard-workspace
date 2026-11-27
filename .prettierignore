@@ -1,0 +1,22 @@
+# Build + generated output
+.next/
+out/
+build/
+coverage/
+.velite/
+
+# Dependencies
+node_modules/
+
+# Lockfiles
+package-lock.json
+
+# Local state
+.omc/
+
+# Hand-authored prose + harness docs — Prettier reflows Markdown tables and
+# frontmatter in ways we don't want. Content notes and docs own their format.
+**/*.md
+**/*.mdx
+.claude/
+docs/

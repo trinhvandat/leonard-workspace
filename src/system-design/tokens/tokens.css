@@ -1,0 +1,86 @@
+/*
+ * Raw palette + semantic alias layer, from the approved prototype artifact
+ * (see docs/PRD.md, the `design-system` skill). Components consume ONLY the
+ * semantic layer below — dark mode (src/system-design/tokens/themes.css)
+ * overrides the raw vars here, and every semantic token inherits for free.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* --- Raw palette (light) --- */
+  --paper: #fdf9f2;
+  --paper-2: #fffdf9;
+  --card: #ffffff;
+
+  --ink: #241f2e;
+  --ink-2: #564c63;
+  --muted: #8a8095;
+
+  --line: #ece4d7;
+  --line-2: #ddd2c2;
+
+  --green: #1f9e6b;
+  --green-ink: #167d55;
+  --green-soft: #e6f4ed;
+
+  --coral: #f0603f;
+  --coral-ink: #d84526;
+  --coral-soft: #fdeae4;
+
+  --berry: #7c5cf0;
+  --berry-ink: #6442d8;
+  --berry-soft: #efeafe;
+
+  --shadow: 0 10px 30px -18px rgba(36, 31, 46, 0.28);
+  --shadow-sm: 0 4px 14px -10px rgba(36, 31, 46, 0.3);
+
+  /* --- Semantic surfaces --- */
+  --surface-page: var(--paper);
+  --surface-raised: var(--paper-2);
+  --surface-card: var(--card);
+  --surface-dot-grid:
+    radial-gradient(circle, var(--line) 1px, transparent 1.3px) 0 0 / 26px 26px, var(--paper);
+
+  /* --- Semantic text --- */
+  --text-primary: var(--ink);
+  --text-secondary: var(--ink-2);
+  --text-muted: var(--muted);
+
+  /* --- Semantic borders --- */
+  --border: var(--line);
+  --border-strong: var(--line-2);
+
+  /* --- Semantic accents (primary = green, from the prototype) --- */
+  --color-accent: var(--green);
+  --color-accent-ink: var(--green-ink);
+  --color-accent-soft: var(--green-soft);
+
+  /* secondary accent / attention = coral */
+  --color-attention: var(--coral);
+  --color-attention-ink: var(--coral-ink);
+  --color-attention-soft: var(--coral-soft);
+
+  /* tertiary accent / highlight = berry */
+  --color-highlight: var(--berry);
+  --color-highlight-ink: var(--berry-ink);
+  --color-highlight-soft: var(--berry-soft);
+
+  /* --- Maturity ladder (matches prototype .mat.seed/.bud/.ever) --- */
+  --maturity-seedling: var(--berry-ink);
+  --maturity-budding: var(--green);
+  --maturity-evergreen: var(--green-ink);
+
+  /* --- Elevation --- */
+  --elevation-sm: var(--shadow-sm);
+  --elevation-md: var(--shadow);
+
+  /* --- Focus ring --- */
+  --focus-ring-color: var(--coral);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+  --focus-ring-radius: 5px;
+
+  /* --- Z-index scale --- */
+  --z-header: 30;
+}

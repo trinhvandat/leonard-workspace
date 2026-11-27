@@ -1,0 +1,35 @@
+---
+title: 'Idempotency keys without losing sleep'
+slug: idempotency-keys
+maturity: seedling
+topics: [postgres, java]
+planted: '2026-08-18'
+tended: '2026-09-01'
+confidence: medium
+citations:
+  - 'https://stripe.com/docs/api/idempotent_requests'
+draft: false
+---
+
+The network is at-least-once; your side effects need to be exactly-once. An idempotency
+key is how you buy the second guarantee over the first without a distributed-systems PhD.
+
+## The humble upsert
+
+The client sends a unique key with the request; the server records the key and the result
+the first time, and on any retry returns the stored result instead of acting again. In
+Postgres that's an `INSERT ... ON CONFLICT DO NOTHING` plus a read — a humble upsert doing
+the work of an exactly-once queue.
+
+```sql
+INSERT INTO processed (key, response)
+VALUES ($1, $2)
+ON CONFLICT (key) DO NOTHING;
+```
+
+## Where it bites
+
+Keys need a scope and a lifetime, or the table grows forever. And the effect you're
+guarding has to be the thing inside the same transaction as the key write — otherwise a
+crash between them puts you right back in at-least-once land. It's the quiet guarantee that
+keeps the network hops honest in a [[monolith-to-microservices]] migration.

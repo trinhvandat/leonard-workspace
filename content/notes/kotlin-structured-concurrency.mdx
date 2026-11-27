@@ -1,0 +1,37 @@
+---
+title: 'Structured concurrency the way Kotlin means it'
+slug: kotlin-structured-concurrency
+maturity: budding
+topics: [kotlin]
+planted: '2026-09-22'
+tended: '2026-10-19'
+confidence: medium
+citations:
+  - 'https://kotlinlang.org/docs/coroutines-guide.html'
+draft: false
+---
+
+Structured concurrency is the promise that a coroutine can't outlive the scope that
+launched it. Get that promise right and a whole category of leaks simply can't happen; get
+it wrong and you've reinvented the raw thread, minus the stack trace.
+
+## Scopes that cancel together
+
+A `coroutineScope` waits for all its children and cancels them together if one fails. That
+"together" is the point: no orphaned work continuing after the request that needed it has
+already returned an error to the user.
+
+```kotlin
+suspend fun loadDashboard() = coroutineScope {
+  val user = async { users.find() }
+  val feed = async { feed.recent() }
+  Dashboard(user.await(), feed.await()) // either failing cancels the other
+}
+```
+
+## Supervisor when failures are independent
+
+Use a `supervisorScope` when one child failing shouldn't take the siblings down — a
+dashboard widget that errors shouldn't blank the whole page. The rule of thumb: a leaked
+coroutine is a leaked thread wearing a lighter costume, so always launch into a scope you
+can name and cancel.

@@ -1,0 +1,14 @@
+.root {
+  border-top: 1px solid var(--border);
+  margin-top: auto;
+}
+
+.inner {
+  padding-block: 28px;
+  padding-bottom: max(28px, env(safe-area-inset-bottom));
+  text-align: center;
+}
+
+.line {
+  color: var(--text-muted);
+}

@@ -1,0 +1,71 @@
+/*
+ * Dark-mode overrides of the RAW tokens only (see tokens.css). Every
+ * semantic token is an alias of a raw var, so it inherits these overrides
+ * automatically — nothing here needs to redefine the semantic layer.
+ *
+ * Two selectors, identical dark values:
+ *  - `prefers-color-scheme: dark` (OS default), escaped by `[data-theme="light"]`
+ *  - `[data-theme="dark"]` (manual toggle override, any OS scheme)
+ */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+
+    --paper: #191520;
+    --paper-2: #1f1a29;
+    --card: #231c30;
+
+    --ink: #f1ebf8;
+    --ink-2: #c5bad6;
+    --muted: #8e85a0;
+
+    --line: #2d2640;
+    --line-2: #3a334e;
+
+    --green: #49c98f;
+    --green-ink: #63d5a1;
+    --green-soft: #153127;
+
+    --coral: #ff7a5c;
+    --coral-ink: #ff9078;
+    --coral-soft: #3a2018;
+
+    --berry: #a58bff;
+    --berry-ink: #bca6ff;
+    --berry-soft: #241a3d;
+
+    --shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.6);
+    --shadow-sm: 0 6px 18px -12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #191520;
+  --paper-2: #1f1a29;
+  --card: #231c30;
+
+  --ink: #f1ebf8;
+  --ink-2: #c5bad6;
+  --muted: #8e85a0;
+
+  --line: #2d2640;
+  --line-2: #3a334e;
+
+  --green: #49c98f;
+  --green-ink: #63d5a1;
+  --green-soft: #153127;
+
+  --coral: #ff7a5c;
+  --coral-ink: #ff9078;
+  --coral-soft: #3a2018;
+
+  --berry: #a58bff;
+  --berry-ink: #bca6ff;
+  --berry-soft: #241a3d;
+
+  --shadow: 0 14px 34px -18px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 6px 18px -12px rgba(0, 0, 0, 0.6);
+}

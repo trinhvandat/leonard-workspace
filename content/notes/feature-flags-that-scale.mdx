@@ -1,0 +1,33 @@
+---
+title: 'Feature flags that scale past a boolean'
+slug: feature-flags-that-scale
+maturity: evergreen
+topics: [architecture]
+planted: '2026-06-20'
+tended: '2026-10-28'
+confidence: high
+citations:
+  - 'https://openfeature.dev/'
+draft: false
+---
+
+A feature flag starts life as an `if`. It ends life as a second, undocumented
+configuration system that nobody is allowed to delete. The gap between those two is
+where the engineering actually lives.
+
+## Targeting, not toggling
+
+A flag that's only on or off can't do a staged rollout. The useful unit is a targeting
+rule: on for this tenant, this percentage, this region. That's what lets a
+[[monolith-to-microservices]] migration move one customer at a time instead of all of them
+on a Friday afternoon.
+
+## Keep the kill switch honest
+
+- Every flag needs an owner and an expiry — a flag with neither is debt with a UI.
+- A kill switch must fail safe: if the flag service is unreachable, fall back to the
+  last-known or the conservative value, never crash.
+- Audit flag reads the same way you audit config, because by month six that's what they are.
+
+The discipline isn't the flags; it's deleting them. A flag that outlived its rollout is a
+branch in production that no test covers.

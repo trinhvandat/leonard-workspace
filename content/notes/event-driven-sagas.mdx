@@ -1,0 +1,30 @@
+---
+title: 'Event-driven sagas before they bite back'
+slug: event-driven-sagas
+maturity: seedling
+topics: [microservices, architecture]
+planted: '2026-11-24'
+tended: '2026-11-24'
+confidence: low
+citations: []
+draft: true
+---
+
+Rough notes, not ready for anyone but me yet. A saga is how you get a multi-step business
+transaction across services when a real distributed transaction isn't on the table — and
+how you undo it when step four fails.
+
+## Orchestration vs choreography
+
+- **Orchestration**: one coordinator tells each service what to do next. Easy to reason
+  about, one place to look, one place to become a bottleneck.
+- **Choreography**: services react to each other's events with no central brain. Loosely
+  coupled, wonderful until you need to answer "why did this order get stuck" and there's no
+  single log to read.
+
+## Compensating actions
+
+The hard half isn't the happy path, it's the undo: every step needs a compensating action
+that semantically reverses it, because you can't roll back a charge you already made —
+you can only refund it. This is the bill that the [[database-per-service-tax]] warned was
+coming.
