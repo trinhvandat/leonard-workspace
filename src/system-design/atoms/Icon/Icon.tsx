@@ -1,6 +1,43 @@
 import type { SVGProps } from "react";
 
-export type IconName = "sprout" | "sun" | "moon";
+export type IconName =
+  "sprout" | "sun" | "moon" | "maturity-seedling" | "maturity-budding" | "maturity-evergreen";
+
+/** Bars filled (of 3) for each maturity stage's bar-chart glyph. */
+const maturityBarsFilled: Record<
+  "maturity-seedling" | "maturity-budding" | "maturity-evergreen",
+  number
+> = {
+  "maturity-seedling": 1,
+  "maturity-budding": 2,
+  "maturity-evergreen": 3,
+};
+
+/** Three ascending bars (growth glyph); `filled` of them are solid, the rest outlined. */
+function MaturityBars({ filled }: { filled: number }) {
+  const bars = [
+    { x: 3, y: 14, h: 7 },
+    { x: 10, y: 9, h: 12 },
+    { x: 17, y: 4, h: 17 },
+  ];
+
+  return (
+    <>
+      {bars.map((bar, index) => (
+        <rect
+          key={bar.x}
+          x={bar.x}
+          y={bar.y}
+          width={4}
+          height={bar.h}
+          rx={1.2}
+          fill="currentColor"
+          fillOpacity={index < filled ? 1 : 0.22}
+        />
+      ))}
+    </>
+  );
+}
 
 interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {
   name: IconName;
@@ -69,6 +106,14 @@ export function Icon({ name, size = 16, ...rest }: IconProps) {
           strokeLinejoin="round"
         >
           <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5Z" />
+        </svg>
+      );
+    case "maturity-seedling":
+    case "maturity-budding":
+    case "maturity-evergreen":
+      return (
+        <svg {...common}>
+          <MaturityBars filled={maturityBarsFilled[name]} />
         </svg>
       );
     default:

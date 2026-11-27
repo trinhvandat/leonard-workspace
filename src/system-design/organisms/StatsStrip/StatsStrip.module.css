@@ -1,0 +1,39 @@
+.root {
+  padding-block: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.tile {
+  padding: 20px;
+  border-radius: 14px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.value {
+  color: var(--text-primary);
+  margin: 0 0 4px;
+}
+
+.good {
+  color: var(--color-accent-ink);
+}
+
+.label {
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

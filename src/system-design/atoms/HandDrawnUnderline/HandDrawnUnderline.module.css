@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.underline {
+  position: absolute;
+  left: -1%;
+  bottom: -0.26em;
+  width: 102%;
+  height: 0.36em;
+  color: var(--color-attention);
+  pointer-events: none;
+}

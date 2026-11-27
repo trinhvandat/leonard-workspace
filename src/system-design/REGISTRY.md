@@ -23,18 +23,19 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 | Component | Purpose | Key props | Status |
 |---|---|---|---|
 | `Text` | typographic primitive (display/serif/mono, sizes) | `as`, `variant`, `size` | built |
-| `Button` | action, accent/ghost variants | `variant`, `href?` | planned |
-| `Tag` | topic chip | `topic`, `count?` | planned |
+| `Button` | action, accent/ghost variants | `variant`, `href?` | built |
+| `Tag` | topic chip | `href`, `label`, `count?` | built |
 | `Link` | styled internal/external link | `href`, `external?` | built |
-| `Icon` | inline SVG set (incl. sprout) | `name`, `size` | built |
-| `MaturityBadge` | 🌱 seedling/budding/evergreen label+icon | `maturity` | planned |
-| `HandDrawnUnderline` | emphasis underline for a word | `children` | planned |
+| `Icon` | inline SVG set (incl. sprout, maturity bars) | `name`, `size` | built |
+| `MaturityBadge` | 🌱 seedling/budding/evergreen label+icon | `maturity` | built |
+| `HandDrawnUnderline` | emphasis underline for a word | `children` | built |
 
 ## Molecules (`molecules/`)
 
 | Component | Purpose | Key props | Status |
 |---|---|---|---|
-| `NoteCard` | note preview — used on `/`, `/notes`, `/topics/[tag]` | `note` | planned |
+| `NoteCard` | note preview — used on `/`, `/notes`, `/topics/[tag]` | `note` | built |
+| `SectionHeader` | section heading: title + rule + optional count | `title`, `count?` | built |
 | `TopicChipList` | row/grid of `Tag` | `topics` | planned |
 | `MetaRow` | confidence · planted · tended | `note` | planned |
 | `CitationList` | sources for a note | `citations` | planned |
@@ -49,11 +50,12 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 |---|---|---|---|
 | `SiteHeader` | nav + `ThemeToggle` | all pages | built |
 | `SiteFooter` | footer | all pages | built |
-| `Hero` | home hero | `/` | planned |
-| `WhatsGrowing` | grid of `NoteCard` (new/featured) | `/` | planned |
-| `AsideExcerpt` | pulled quote from one note | `/` | planned |
-| `StatsStrip` | garden stats | `/` | planned |
-| `FreelanceCTA` | hire/contact call-to-action | `/`, `/about` | planned |
+| `Hero` | home hero | `/` | built |
+| `WhatsGrowing` | grid of `NoteCard` (new/featured) | `/` | built |
+| `AsideExcerpt` | pulled quote (editorial constant, see `content.ts`) | `/` | built |
+| `WanderByTopic` | topic chips with counts | `/` | built |
+| `StatsStrip` | garden stats | `/` | built |
+| `FreelanceCTA` | hire/contact call-to-action | `/`, `/about` | built |
 | `NoteReadingColumn` | ~680px reading column (renders MDX) | `/notes/[slug]` | planned |
 | `NoteMetaRail` | rail: MetaRow + TOC + BacklinkList | `/notes/[slug]` | planned |
 | `EmptyState` | no-results / empty list | `/notes`, `/topics/[tag]` | planned |

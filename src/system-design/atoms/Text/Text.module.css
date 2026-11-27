@@ -19,11 +19,20 @@
 .size-h1 {
   font-size: var(--type-size-h1);
   line-height: var(--type-leading-h1);
+  font-weight: 800;
 }
 
 .size-h2 {
   font-size: var(--type-size-h2);
   line-height: var(--type-leading-h2);
+  font-weight: 700;
+}
+
+.size-stat {
+  font-size: var(--type-size-stat);
+  line-height: var(--type-leading-stat);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
 }
 
 .size-h3 {
@@ -34,6 +43,16 @@
 .size-body {
   font-size: var(--type-size-body);
   line-height: var(--type-leading-body);
+}
+
+.size-name {
+  font-size: var(--type-size-name);
+  line-height: var(--type-leading-name);
+}
+
+.size-quote {
+  font-size: var(--type-size-quote);
+  line-height: var(--type-leading-quote);
 }
 
 .size-meta {

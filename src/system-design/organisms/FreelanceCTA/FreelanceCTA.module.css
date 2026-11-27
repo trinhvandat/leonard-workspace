@@ -1,0 +1,20 @@
+.root {
+  padding: 40px 32px;
+  border-radius: 18px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--elevation-md);
+  text-align: center;
+  margin-block: 40px;
+}
+
+.title {
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+.copy {
+  color: var(--text-secondary);
+  max-width: 48ch;
+  margin: 0 auto 24px;
+}
