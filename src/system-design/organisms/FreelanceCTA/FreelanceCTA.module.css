@@ -1,8 +1,9 @@
 .root {
   padding: 40px 32px;
   border-radius: 18px;
-  background: var(--color-accent-soft);
+  background: var(--surface-card);
   border: 1px solid var(--border);
+  box-shadow: var(--elevation-md);
   text-align: center;
   margin-block: 40px;
 }

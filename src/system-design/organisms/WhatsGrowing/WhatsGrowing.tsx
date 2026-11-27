@@ -20,13 +20,13 @@ export function WhatsGrowing({ notes, total }: WhatsGrowingProps) {
     <section className={styles.root}>
       <SectionHeader title="What's growing" count={`${total} notes`} />
 
-      <div className={styles.grid}>
+      <div className={styles.notes}>
         {notes.map((note) => (
           <NoteCard key={note.slug} note={note} />
         ))}
       </div>
 
-      <Tag href="/notes" label="Browse all notes →" className={styles.browseAll} />
+      <Tag href="/notes" label="browse all notes →" className={styles.browseAll} />
     </section>
   );
 }

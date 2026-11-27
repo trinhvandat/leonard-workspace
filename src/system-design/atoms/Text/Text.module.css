@@ -36,6 +36,16 @@
   line-height: var(--type-leading-body);
 }
 
+.size-name {
+  font-size: var(--type-size-name);
+  line-height: var(--type-leading-name);
+}
+
+.size-quote {
+  font-size: var(--type-size-quote);
+  line-height: var(--type-leading-quote);
+}
+
 .size-meta {
   font-size: var(--type-size-meta);
   line-height: var(--type-leading-meta);

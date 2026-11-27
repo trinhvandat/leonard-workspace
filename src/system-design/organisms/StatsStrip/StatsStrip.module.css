@@ -1,8 +1,11 @@
 .root {
+  padding-block: 32px;
+}
+
+.grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 16px;
-  padding-block: 32px;
+  gap: 12px;
 }
 
 .tile {
@@ -30,7 +33,7 @@
 }
 
 @media (max-width: 520px) {
-  .root {
+  .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }

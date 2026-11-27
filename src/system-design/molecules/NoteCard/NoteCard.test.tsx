@@ -27,8 +27,8 @@ describe("NoteCard", () => {
       screen.getByText("This is the derived dek, the note's opening paragraph."),
     ).toBeInTheDocument();
 
-    // 3. maturity label — mono text rendered by MaturityBadge
-    expect(screen.getByText("Evergreen")).toBeInTheDocument();
+    // 3. maturity label — mono text rendered by MaturityBadge (raw lowercase maturity)
+    expect(screen.getByText("evergreen")).toBeInTheDocument();
 
     // 4. the whole card links to /notes/[slug]
     const link = screen.getByRole("link");

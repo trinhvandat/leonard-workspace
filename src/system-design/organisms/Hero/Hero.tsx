@@ -16,12 +16,14 @@ export function Hero() {
       </Text>
 
       <Text as="h1" variant="display" size="h1" className={styles.title}>
-        A garden of <HandDrawnUnderline>engineering notes</HandDrawnUnderline> that grow up
+        A digital garden where my <HandDrawnUnderline>engineering notes</HandDrawnUnderline> grow
+        up.
       </Text>
 
       <Text as="p" variant="body" size="body" className={styles.lede}>
-        <em>Migration patterns, trade-offs, and code that survived production</em> — written down
-        while they&apos;re still useful, then tended as they age.
+        I plant rough ideas, then tend them into lessons I can actually reuse — migration patterns,
+        trade-offs that bit me, and <em>code that survived production.</em> Everything here is cited
+        and versioned.
       </Text>
 
       <div className={styles.introCard}>
@@ -29,14 +31,14 @@ export function Hero() {
           L
         </span>
         <div>
-          <Text as="p" variant="display" size="h3" className={styles.name}>
+          <Text as="p" variant="body" size="name" className={styles.name}>
             Leonard
           </Text>
           <Text as="p" variant="mono" size="meta" className={styles.role}>
-            Fullstack Engineer (backend-heavy) &amp; Engineering Manager
+            Fullstack engineer (backend-heavy) &amp; eng manager
           </Text>
           <Text as="p" variant="mono" size="meta" className={styles.stack}>
-            Java · Kotlin · Spring Boot · TypeScript · PostgreSQL
+            Java · Spring · Kotlin · TypeScript · PostgreSQL
           </Text>
         </div>
       </div>

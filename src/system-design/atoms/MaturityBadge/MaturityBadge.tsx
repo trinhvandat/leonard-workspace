@@ -9,9 +9,9 @@ interface MaturityBadgeProps {
 }
 
 const labelByMaturity: Record<Maturity, string> = {
-  seedling: "Seedling",
-  budding: "Budding",
-  evergreen: "Evergreen",
+  seedling: "seedling",
+  budding: "budding",
+  evergreen: "evergreen",
 };
 
 const iconByMaturity: Record<Maturity, IconName> = {

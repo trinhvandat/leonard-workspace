@@ -19,8 +19,8 @@ interface NoteCardProps {
  */
 export function NoteCard({ note, className }: NoteCardProps) {
   const dek = extractDek(note.raw);
-  const topics = note.topics.join(", ");
-  const stageLine = [topics, `${note.confidence} confidence`].filter(Boolean).join(" · ");
+  const stageLine = [...note.topics, `confidence: ${note.confidence}`].join(" · ");
+  const tendedLabel = `${note.maturity === "evergreen" ? "tended " : ""}${formatTended(note.tended)}`;
 
   return (
     <NextLink
@@ -30,7 +30,7 @@ export function NoteCard({ note, className }: NoteCardProps) {
       <div className={styles.top}>
         <MaturityBadge maturity={note.maturity} />
         <Text as="span" variant="mono" size="meta" className={styles.tended}>
-          {formatTended(note.tended)}
+          {tendedLabel}
         </Text>
       </div>
 

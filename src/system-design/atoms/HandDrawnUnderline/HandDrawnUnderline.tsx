@@ -17,15 +17,15 @@ export function HandDrawnUnderline({ children, className }: HandDrawnUnderlinePr
       {children}
       <svg
         className={styles.underline}
-        viewBox="0 0 120 12"
+        viewBox="0 0 200 12"
         preserveAspectRatio="none"
         aria-hidden="true"
       >
         <path
-          d="M1 7.5c10-4 20-5 30-4.5 10 .5 20 3.5 30 3 10-.5 20-4 30-4.5 9.5-.5 19 1 28 4"
+          d="M2 8c40-6 90-6 196-2"
           fill="none"
-          stroke="var(--color-attention)"
-          strokeWidth="3"
+          stroke="currentColor"
+          strokeWidth="4"
           strokeLinecap="round"
         />
       </svg>

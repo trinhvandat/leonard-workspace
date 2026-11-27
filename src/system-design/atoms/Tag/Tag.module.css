@@ -19,5 +19,6 @@
 }
 
 .count {
-  color: var(--text-muted);
+  color: var(--color-accent-ink);
+  font-weight: 500;
 }

@@ -1,4 +1,5 @@
 import type { Stats } from "@/content";
+import { SectionHeader } from "@/system-design/molecules/SectionHeader";
 import { Text } from "@/system-design/atoms/Text";
 import styles from "./StatsStrip.module.css";
 
@@ -7,8 +8,8 @@ interface StatsStripProps {
 }
 
 /**
- * Garden stats — the prototype's `.seeds`/`.sd`: 4 tiles (notes, topics,
- * % cited, dead links). 4-col grid collapsing to 2-col at ≤520px.
+ * Garden stats — the prototype's `.sh` header ("Tended with care") + `.seeds`/`.sd`:
+ * 4 tiles (notes, topics, % cited, dead links). 4-col grid collapsing to 2-col at ≤520px.
  */
 export function StatsStrip({ stats }: StatsStripProps) {
   const tiles = [
@@ -20,21 +21,24 @@ export function StatsStrip({ stats }: StatsStripProps) {
 
   return (
     <section className={styles.root}>
-      {tiles.map((tile) => (
-        <div key={tile.label} className={styles.tile}>
-          <Text
-            as="p"
-            variant="display"
-            size="h2"
-            className={[styles.value, tile.tone].filter(Boolean).join(" ")}
-          >
-            {tile.value}
-          </Text>
-          <Text as="p" variant="mono" size="meta" className={styles.label}>
-            {tile.label}
-          </Text>
-        </div>
-      ))}
+      <SectionHeader title="Tended with care" />
+      <div className={styles.grid}>
+        {tiles.map((tile) => (
+          <div key={tile.label} className={styles.tile}>
+            <Text
+              as="p"
+              variant="display"
+              size="h2"
+              className={[styles.value, tile.tone].filter(Boolean).join(" ")}
+            >
+              {tile.value}
+            </Text>
+            <Text as="p" variant="mono" size="meta" className={styles.label}>
+              {tile.label}
+            </Text>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

@@ -6,9 +6,10 @@
 
 .underline {
   position: absolute;
-  left: -2%;
-  bottom: -0.14em;
-  width: 104%;
-  height: 0.28em;
+  left: -1%;
+  bottom: -0.26em;
+  width: 102%;
+  height: 0.36em;
+  color: var(--color-attention);
   pointer-events: none;
 }

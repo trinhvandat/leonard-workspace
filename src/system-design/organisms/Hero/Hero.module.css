@@ -6,9 +6,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  color: var(--color-attention-ink);
+  letter-spacing: 0.01em;
   margin: 0 0 16px;
 }
 
@@ -58,7 +57,8 @@
 
 .name {
   color: var(--text-primary);
-  margin: 0;
+  font-weight: 500;
+  margin: 0 0 2px;
 }
 
 .role,

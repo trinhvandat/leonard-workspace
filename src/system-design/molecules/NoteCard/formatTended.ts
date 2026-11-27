@@ -1,4 +1,4 @@
-/** Format an ISO date string as e.g. "Nov 15" (UTC, so it matches the stored date regardless of viewer timezone). */
+/** Format an ISO date string as e.g. "Nov 2026" (month + year, UTC so it matches the stored date regardless of viewer timezone). */
 export function formatTended(iso: string | undefined): string {
   if (!iso) return "";
   const date = new Date(iso);
@@ -6,7 +6,7 @@ export function formatTended(iso: string | undefined): string {
 
   return new Intl.DateTimeFormat("en-US", {
     month: "short",
-    day: "numeric",
+    year: "numeric",
     timeZone: "UTC",
   }).format(date);
 }

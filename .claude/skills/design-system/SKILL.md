@@ -64,6 +64,20 @@ Define all colors as CSS custom properties on `:root`. Provide a full dark-mode 
 - **Body serif:** Newsreader
 - **Meta / code:** JetBrains Mono
 
+### Type scale (`tokens/typography.css`)
+
+Semantic `--type-size-*` / `--type-leading-*` steps components consume via the `Text` atom's `size` prop — never a literal font-size:
+
+| Step | Size | Used by |
+|---|---|---|
+| `h1` | `clamp(37px,6.6vw,56px)` | Hero `h1` |
+| `h2` | `clamp(22px,4.4vw,28px)` | Section headers |
+| `h3` | `21px` | Note card titles |
+| `body` | `18px` | Lede / body copy |
+| `name` | `16px` | Hero intro card's name (serif, weight 500) |
+| `quote` | `16.5px` | AsideExcerpt pull-quote (serif, body-sized) |
+| `meta` | `12px` | Mono/meta text |
+
 ## Dark mode
 
 - Default to `prefers-color-scheme`.

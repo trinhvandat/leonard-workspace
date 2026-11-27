@@ -10,14 +10,14 @@ export function FreelanceCTA() {
   return (
     <section className={styles.root}>
       <Text as="h2" variant="display" size="h2" className={styles.title}>
-        Need a hand with your next migration?
+        Like how I think?
       </Text>
       <Text as="p" variant="body" size="body" className={styles.copy}>
-        I take on contract and freelance work — backend architecture, Spring Boot services, and the
-        kind of migrations that are safer with someone who&apos;s done a few.
+        I&apos;m open to freelance &amp; contract backend work. Pull up any note and see for
+        yourself.
       </Text>
       <Button href="/about" variant="accent">
-        Get in touch →
+        Say hello →
       </Button>
     </section>
   );

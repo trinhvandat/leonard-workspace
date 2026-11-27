@@ -28,6 +28,14 @@
   --type-size-body: 18px;
   --type-leading-body: 1.62;
 
+  /* Small serif label (e.g. the hero intro card's name) */
+  --type-size-name: 16px;
+  --type-leading-name: 1.5;
+
+  /* Pull-quote body (e.g. AsideExcerpt) — body family, slightly smaller than --type-size-body */
+  --type-size-quote: 16.5px;
+  --type-leading-quote: 1.62;
+
   /* Meta / mono */
   --type-size-meta: 12px;
   --type-leading-meta: 1.4;
