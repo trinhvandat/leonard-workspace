@@ -1,0 +1,31 @@
+/*
+ * Phase 0 base reset only. Color, typography, and dot-grid tokens are added
+ * by the token layer in Phase 1 (src/system-design/tokens/*), which this file
+ * will @import. No raw values live here — this stylesheet consumes tokens.
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
