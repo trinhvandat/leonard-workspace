@@ -1,0 +1,12 @@
+.root {
+  margin-inline: auto;
+  padding-inline: max(24px, env(safe-area-inset-left)) max(24px, env(safe-area-inset-right));
+}
+
+.content {
+  max-width: 712px;
+}
+
+.wide {
+  max-width: 860px;
+}

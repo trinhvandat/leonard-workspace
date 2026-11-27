@@ -22,11 +22,11 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 
 | Component | Purpose | Key props | Status |
 |---|---|---|---|
-| `Text` | typographic primitive (display/serif/mono, sizes) | `as`, `variant`, `size` | planned |
+| `Text` | typographic primitive (display/serif/mono, sizes) | `as`, `variant`, `size` | built |
 | `Button` | action, accent/ghost variants | `variant`, `href?` | planned |
 | `Tag` | topic chip | `topic`, `count?` | planned |
-| `Link` | styled internal/external link | `href`, `external?` | planned |
-| `Icon` | inline SVG set (incl. sprout) | `name`, `size` | planned |
+| `Link` | styled internal/external link | `href`, `external?` | built |
+| `Icon` | inline SVG set (incl. sprout) | `name`, `size` | built |
 | `MaturityBadge` | 🌱 seedling/budding/evergreen label+icon | `maturity` | planned |
 | `HandDrawnUnderline` | emphasis underline for a word | `children` | planned |
 
@@ -40,15 +40,15 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 | `CitationList` | sources for a note | `citations` | planned |
 | `BacklinkList` | connected notes (both directions) | `backlinks` | planned |
 | `TableOfContents` | in-note headings nav | `headings` | planned |
-| `ThemeToggle` | **client** — theme override + localStorage | — | planned |
+| `ThemeToggle` | **client** — theme override + localStorage | — | built |
 | `FilterBar` | **client** — filter by maturity + topic | `topics`, `onChange` | planned |
 
 ## Organisms (`organisms/`)
 
 | Component | Purpose | Used by | Status |
 |---|---|---|---|
-| `SiteHeader` | nav + `ThemeToggle` | all pages | planned |
-| `SiteFooter` | footer | all pages | planned |
+| `SiteHeader` | nav + `ThemeToggle` | all pages | built |
+| `SiteFooter` | footer | all pages | built |
 | `Hero` | home hero | `/` | planned |
 | `WhatsGrowing` | grid of `NoteCard` (new/featured) | `/` | planned |
 | `AsideExcerpt` | pulled quote from one note | `/` | planned |
@@ -62,7 +62,7 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 
 | Component | Purpose | Status |
 |---|---|---|
-| `Container` | max-width + safe-area insets | planned |
+| `Container` | max-width + safe-area insets | built |
 | `TwoColumnReading` | reading column + rail → 1 col on mobile | planned |
 
 ## MDX bridge (`mdx/`)
