@@ -1,0 +1,42 @@
+---
+title: 'Monolith → microservices: the patterns that held up'
+slug: monolith-to-microservices
+maturity: evergreen
+topics: [architecture, microservices]
+planted: '2026-08-01'
+tended: '2026-11-15'
+confidence: high
+citations:
+  - 'https://martinfowler.com/bliki/StranglerFigApplication.html'
+  - 'https://microservices.io/patterns/'
+draft: false
+---
+
+Big-bang rewrites are where roadmaps go to die. The honest version of "we migrated to
+microservices" is eighteen months of a [[feature-flags-that-scale]] quietly routing one
+capability at a time away from the monolith until there's nothing left to route.
+
+## Route, don't rewrite
+
+The strangler-fig pattern borrows its name from a vine that grows around a host tree and
+eventually replaces it. In code, the "vine" is a routing layer: new requests check a
+per-capability flag; if it's on they hit the v2 service, otherwise they fall through to legacy.
+
+```kotlin
+// orders.v2 grows; the monolith shrinks
+fun place(cmd: PlaceOrder) =
+  if (flags.on("orders.v2", cmd.tenant)) orders.place(cmd)
+  else legacy.place(cmd)
+```
+
+Every seam you cut buys independence and costs a network hop plus a consistency problem — see
+the [[database-per-service-tax]] before you cut the third one.
+
+## The three seams worth cutting first
+
+- The write path with the worst lock contention — moving it out buys the most headroom.
+- The capability with a different scaling shape (read-heavy catalog beside a write-heavy ledger).
+- The thing a separate team owns — Conway's law is cheaper to obey than to fight.
+
+A monolith with three clean seams beats a distributed system with twelve blurry ones, and
+[[idempotency-keys]] is what keeps the hops honest while you get there.

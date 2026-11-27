@@ -11,6 +11,7 @@ node_modules/
 out/
 build/
 dist/
+*.tsbuildinfo
 
 # Content layer generated output
 .velite/

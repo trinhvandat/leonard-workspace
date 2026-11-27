@@ -1,0 +1,34 @@
+---
+title: 'Connection pooling is a capacity decision, not a default'
+slug: postgres-connection-pooling
+maturity: evergreen
+topics: [postgres]
+planted: '2026-07-11'
+tended: '2026-10-05'
+confidence: high
+citations:
+  - 'https://www.pgbouncer.org/'
+draft: false
+---
+
+The default pool size in most frameworks is a number someone picked to not embarrass the
+getting-started guide. Treating it as a capacity decision — tied to cores and latency, not
+vibes — is the difference between a database that scales and one that thrashes.
+
+## Size it from the hardware
+
+A Postgres connection is a backend process, not a cheap handle. The useful starting point
+is small: roughly `(cores × 2) + effective spindles`, then measured, not doubled on a
+hunch. More connections past the point of contention makes throughput worse, not better,
+because the server spends its time context-switching instead of answering queries — the
+same honesty an [[idempotency-keys]] retry path depends on.
+
+## When PgBouncer belongs in the path
+
+- **Transaction pooling** lets hundreds of app connections share a handful of real ones —
+  essential once you're running many stateless pods.
+- It costs you session-level features (prepared statements, `SET` that outlives a
+  transaction), so it's a deliberate trade, not a free upgrade.
+
+Pick the number on purpose and the pool disappears as a problem. Leave it default and it
+reappears as a 2 a.m. incident.

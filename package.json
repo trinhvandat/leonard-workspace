@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "velite && next dev",
+    "build": "velite build --strict && next build",
+    "content": "velite build --strict",
     "start": "next start",
     "lint": "eslint",
     "format": "prettier --write .",

@@ -1,0 +1,33 @@
+---
+title: 'Cutting Spring Boot startup from 9s to 1.2s'
+slug: spring-boot-startup-time
+maturity: evergreen
+topics: [spring-boot, java]
+planted: '2026-05-30'
+tended: '2026-11-20'
+confidence: high
+citations:
+  - 'https://docs.spring.io/spring-boot/reference/'
+draft: false
+---
+
+Nine seconds of startup is fine until you're running forty pods and every deploy, every
+autoscale event, and every crash-loop pays it. Getting to 1.2s was less about one trick
+and more about refusing to do work the app doesn't need yet.
+
+## Lazy init first
+
+The biggest single win was lazy initialization: beans that aren't on the request path
+don't need to exist before the first request that uses them. It's a one-line toggle and it
+cut the cold start roughly in half on its own.
+
+## Then share the class data
+
+- **Class-data sharing (CDS)** archives the loaded classes so the JVM skips re-parsing them
+  on every boot — most of the remaining time lived here.
+- **AOT / native image** pays off when you need sub-100ms starts and can accept the build
+  cost and the reflection constraints. For a long-lived service it was more ceremony than
+  it was worth; for a scale-to-zero function it would have been the headline.
+
+The lesson that generalized: startup time is a feature of how much you defer, not how fast
+your machine is.

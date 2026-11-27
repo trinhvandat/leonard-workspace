@@ -1,0 +1,29 @@
+---
+title: 'Agentic workflow patterns, minus the hype'
+slug: agentic-workflow-patterns
+maturity: budding
+topics: [ai-systems]
+planted: '2026-10-05'
+tended: '2026-10-30'
+confidence: medium
+citations:
+  - 'https://www.anthropic.com/research/building-effective-agents'
+draft: false
+---
+
+Most "agent" systems are workflows wearing a trench coat, and that's a compliment. The
+reliable ones are mostly plumbing: prompt-chaining, routing, and the occasional loop —
+each earning its complexity or getting cut.
+
+## Start with a chain
+
+Prompt-chaining — one step's output is the next step's input — handles the majority of
+real tasks and is trivial to debug because every step is inspectable. Reach for routing
+only when inputs genuinely fork into different handlers.
+
+## When the loop earns its keep
+
+The one pattern worth the extra moving parts is the [[evaluator-optimizer-loop]]: a
+generator proposes, an evaluator grades, and you iterate until the score stops improving.
+It's worth it when quality is measurable and a single pass is reliably not good enough —
+and a waste everywhere else.

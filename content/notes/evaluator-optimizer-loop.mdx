@@ -1,0 +1,28 @@
+---
+title: 'The evaluator–optimizer loop in practice'
+slug: evaluator-optimizer-loop
+maturity: seedling
+topics: [ai-systems]
+planted: '2026-11-12'
+tended: '2026-11-12'
+confidence: low
+citations:
+  - 'https://www.anthropic.com/research/building-effective-agents'
+draft: false
+---
+
+Rough notes while I use this on a real task. One model drafts; another grades the draft
+against an explicit rubric; you feed the critique back and redraft. Stop when the score
+plateaus, not when you run out of patience.
+
+## What makes it work
+
+The rubric is the whole game. A vague "is this good?" evaluator just adds latency; a
+specific rubric — "cites a source for every claim, no sentence over 25 words" — gives the
+optimizer something to climb. This is the loop [[agentic-workflow-patterns]] says to save
+for when quality is actually measurable.
+
+## Open questions
+
+- How many rounds before the gains are noise? Early guess: two or three.
+- Does the same model grading its own work cheat? Suspect yes — a separate grader helps.
