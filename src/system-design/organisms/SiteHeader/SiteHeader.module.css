@@ -1,7 +1,7 @@
 .root {
   position: sticky;
   top: 0;
-  z-index: var(--z-header, 10);
+  z-index: var(--z-header);
   border-bottom: 1px solid var(--border);
   background: color-mix(in srgb, var(--surface-page) 85%, transparent);
   backdrop-filter: blur(10px);

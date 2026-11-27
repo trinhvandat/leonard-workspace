@@ -80,4 +80,7 @@
   --focus-ring-width: 2px;
   --focus-ring-offset: 3px;
   --focus-ring-radius: 5px;
+
+  /* --- Z-index scale --- */
+  --z-header: 30;
 }
