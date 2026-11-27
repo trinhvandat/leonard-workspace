@@ -1,0 +1,38 @@
+.root {
+  position: relative;
+  padding: 26px 24px;
+  border-radius: 16px;
+  background: var(--color-highlight-soft);
+  border: 1px solid var(--border);
+  margin-block: 32px;
+}
+
+.tape {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--surface-card);
+  color: var(--color-highlight-ink);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 14px;
+}
+
+.quote {
+  color: var(--text-primary);
+  font-style: italic;
+  margin: 0 0 18px;
+}
+
+.code {
+  margin: 0;
+  padding: 16px;
+  border-radius: 10px;
+  background: var(--surface-page);
+  border: 1px solid var(--border);
+  overflow-x: auto;
+  font-family: var(--type-family-mono);
+  font-size: var(--type-size-meta);
+  line-height: var(--type-leading-meta);
+  color: var(--text-secondary);
+}

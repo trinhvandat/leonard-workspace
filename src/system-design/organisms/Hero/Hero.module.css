@@ -1,0 +1,75 @@
+.root {
+  padding-block: 56px 40px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0 0 16px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-attention);
+}
+
+.title {
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  max-width: 14ch;
+}
+
+.lede {
+  color: var(--text-secondary);
+  max-width: 54ch;
+  margin: 0 0 32px;
+}
+
+.introCard {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 22px;
+  border-radius: 16px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  max-width: fit-content;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  font-family: var(--type-family-display);
+  font-weight: 600;
+  color: var(--surface-page);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-highlight));
+}
+
+.name {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.role,
+.stack {
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+@media (max-width: 640px) {
+  .introCard {
+    flex-wrap: wrap;
+    max-width: 100%;
+  }
+}

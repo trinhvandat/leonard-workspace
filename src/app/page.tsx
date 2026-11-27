@@ -1,21 +1,33 @@
-import { Text } from "@/system-design/atoms/Text";
+import { featured, getPublicNotes, stats, topicCounts } from "@/content";
 import { Container } from "@/system-design/layouts/Container";
+import { AsideExcerpt } from "@/system-design/organisms/AsideExcerpt";
+import { FreelanceCTA } from "@/system-design/organisms/FreelanceCTA";
+import { Hero } from "@/system-design/organisms/Hero";
+import { StatsStrip } from "@/system-design/organisms/StatsStrip";
+import { WanderByTopic } from "@/system-design/organisms/WanderByTopic";
+import { WhatsGrowing } from "@/system-design/organisms/WhatsGrowing";
 
 /**
- * Minimal placeholder home page, shell-wrapped so the real shell
- * (SiteHeader / SiteFooter / Container, added in Phase 3) is visible on
- * every route. The full home screen composition is a later per-screen PRP.
+ * Home (`/`) — server component. Data-fetch + composition only; every
+ * organism owns its own styling. See docs/plans/home-screen.md for the
+ * approved composition order: hero → what's growing → aside excerpt →
+ * wander by topic → stats → freelance CTA.
  */
 export default function HomePage() {
+  const featuredNotes = featured(3);
+  const totalNotes = getPublicNotes().length;
+  const gardenStats = stats();
+  const topics = topicCounts();
+
   return (
     <main>
       <Container>
-        <Text as="h1" variant="display" size="h1">
-          Leonard&apos;s Garden
-        </Text>
-        <Text variant="body" size="body">
-          Planting the foundation. The garden is being tended.
-        </Text>
+        <Hero />
+        <WhatsGrowing notes={featuredNotes} total={totalNotes} />
+        <AsideExcerpt />
+        <WanderByTopic topics={topics} />
+        <StatsStrip stats={gardenStats} />
+        <FreelanceCTA />
       </Container>
     </main>
   );

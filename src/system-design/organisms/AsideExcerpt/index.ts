@@ -1,0 +1,1 @@
+export { AsideExcerpt } from "./AsideExcerpt";

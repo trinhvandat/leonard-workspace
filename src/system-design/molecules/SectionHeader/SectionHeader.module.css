@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.title {
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.rule {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.count {
+  color: var(--text-muted);
+  white-space: nowrap;
+}

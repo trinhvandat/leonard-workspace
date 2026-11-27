@@ -1,0 +1,19 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.seedling {
+  color: var(--maturity-seedling);
+}
+
+.budding {
+  color: var(--maturity-budding);
+}
+
+.evergreen {
+  color: var(--maturity-evergreen);
+}

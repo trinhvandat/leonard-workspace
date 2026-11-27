@@ -1,0 +1,14 @@
+.root {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.underline {
+  position: absolute;
+  left: -2%;
+  bottom: -0.14em;
+  width: 104%;
+  height: 0.28em;
+  pointer-events: none;
+}
