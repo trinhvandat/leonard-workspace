@@ -2,17 +2,18 @@
 // Tháp ngược — tầng Static (structural invariants for system-design).
 //
 // REGISTRY.md is the reuse-first lookup; it is only useful while it stays true.
-// This gate makes two of its rules deterministic:
+// This gate makes two of its rules deterministic, both HARD FAILs:
 //
-//   HARD FAIL — every component directory under atoms/molecules/organisms/
-//   layouts has a row in REGISTRY.md. A new component without a row means the
-//   map lies and reviewers/agents miss it, so adding one without a row fails CI.
+//   1. Every component directory under atoms/molecules/organisms/layouts has a
+//      row in REGISTRY.md. A new component without a row means the map lies and
+//      reviewers/agents miss it.
 //
-//   NOTE (non-blocking) — REGISTRY says `built` = "exists + tested". Components
-//   marked built without a `*.test.tsx` are reported so the gap is visible,
-//   but do not fail the build yet (tests are being backfilled incrementally).
+//   2. REGISTRY says `built` = "exists + tested". A component marked built
+//      without a colocated `*.test.tsx|ts` fails the build. (The backfill of
+//      the original 18 built-without-test components is complete, so this is
+//      now enforced rather than merely noted.)
 //
-// Exits 1 only on a missing REGISTRY row.
+// Exits 1 on either violation.
 
 import { readFileSync, readdirSync, existsSync } from "node:fs";
 import { join } from "node:path";
@@ -57,17 +58,22 @@ for (const layer of LAYERS) {
   }
 }
 
-if (builtNoTest.length > 0) {
-  console.log(`structural-guard NOTE: ${builtNoTest.length} 'built' component(s) without a test:`);
-  for (const c of builtNoTest) console.log(`  - ${c}`);
-  console.log("  (REGISTRY defines built = exists + tested — backfill tests to close this.)\n");
-}
+let failed = false;
 
 if (missingRow.length > 0) {
   console.error("structural-guard FAIL: component directory missing a REGISTRY.md row:");
   for (const c of missingRow) console.error(`  - ${c}`);
-  console.error("\nAdd a row for each (keep REGISTRY.md the source of truth for reuse).");
-  process.exit(1);
+  console.error("Add a row for each (keep REGISTRY.md the source of truth for reuse).\n");
+  failed = true;
 }
 
-console.log("structural-guard: every component directory has a REGISTRY row.");
+if (builtNoTest.length > 0) {
+  console.error(`structural-guard FAIL: ${builtNoTest.length} 'built' component(s) without a test:`);
+  for (const c of builtNoTest) console.error(`  - ${c}`);
+  console.error("Add a colocated <Name>.test.tsx, or set the REGISTRY status to 'planned'.\n");
+  failed = true;
+}
+
+if (failed) process.exit(1);
+
+console.log("structural-guard: every component has a REGISTRY row and a test.");
