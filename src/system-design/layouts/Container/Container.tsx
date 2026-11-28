@@ -1,11 +1,15 @@
 import type { ElementType, ReactNode } from "react";
 import styles from "./Container.module.css";
 
-type ContainerWidth = "content" | "wide";
+type ContainerWidth = "content" | "wide" | "reading";
 
 interface ContainerProps {
   as?: ElementType;
-  /** "content" (~712px, default) for reading-width text, "wide" (~860px) for nav/page shells. */
+  /**
+   * "content" (~712px, default) for reading-width text, "wide" (~860px) for
+   * nav/page shells, "reading" (1060px, the prototype's `.notewrap`) for the
+   * note-detail 2-column grid.
+   */
   width?: ContainerWidth;
   className?: string;
   children: ReactNode;

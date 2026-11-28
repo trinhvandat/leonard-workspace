@@ -36,11 +36,11 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 |---|---|---|---|
 | `NoteCard` | note preview — used on `/`, `/notes`, `/topics/[tag]` | `note` | built |
 | `SectionHeader` | section heading: title + rule + optional count | `title`, `count?` | built |
-| `TopicChipList` | row/grid of `Tag` | `topics` | planned |
-| `MetaRow` | confidence · planted · tended | `note` | planned |
-| `CitationList` | sources for a note | `citations` | planned |
-| `BacklinkList` | connected notes (both directions) | `backlinks` | planned |
-| `TableOfContents` | in-note headings nav | `headings` | planned |
+| `TopicChipList` | green-soft `#tag` pills → `/topics/[tag]` | `topics` | built |
+| `MetaRow` | field-notes card / narrow meta bar | `note`, `layout?` | built |
+| `CitationList` | sources for a note (section-mini) | `citations` | built |
+| `BacklinkList` | connected notes, column or rail | `connected`, `variant?` | built |
+| `TableOfContents` | in-note headings nav (no scroll-spy yet) | `headings` | built |
 | `ThemeToggle` | **client** — theme override + localStorage | — | built |
 | `FilterBar` | **client** — filter by maturity + topic | `topics`, `onChange` | planned |
 
@@ -56,19 +56,22 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 | `WanderByTopic` | topic chips with counts | `/` | built |
 | `StatsStrip` | garden stats | `/` | built |
 | `FreelanceCTA` | hire/contact call-to-action | `/`, `/about` | built |
-| `NoteReadingColumn` | ~680px reading column (renders MDX) | `/notes/[slug]` | planned |
-| `NoteMetaRail` | rail: MetaRow + TOC + BacklinkList | `/notes/[slug]` | planned |
+| `NotePageHead` | note page head: crumb + maturity + `h1` | `/notes/[slug]` | built |
+| `NoteReadingColumn` | ~680px reading column (renders MDX) | `/notes/[slug]` | built |
+| `NoteMetaRail` | rail: MetaRow + TOC + BacklinkList | `/notes/[slug]` | built |
 | `EmptyState` | no-results / empty list | `/notes`, `/topics/[tag]` | planned |
 
 ## Layouts (`layouts/`)
 
 | Component | Purpose | Status |
 |---|---|---|
-| `Container` | max-width + safe-area insets | built |
-| `TwoColumnReading` | reading column + rail → 1 col on mobile | planned |
+| `Container` | max-width + safe-area insets (`content`/`wide`/`reading` 1060px) | built |
+| `TwoColumnReading` | reading column + rail → 1 col on mobile | built |
 
 ## MDX bridge (`mdx/`)
 
 | Item | Purpose | Status |
 |---|---|---|
-| `mdxComponents` | map MDX → atoms; `[[wiki-link]]`, code highlight, `HandDrawnUnderline` | planned |
+| `MDXContent` | server-only render of a note's compiled MDX body | built |
+| `mdxComponents` | map MDX → atoms; `WikiLink`, `a`, `blockquote`→callout | built |
+| `prose.module.css` | `.prose` typography + `.wl` + `.callout` + Shiki dark-mode | built |

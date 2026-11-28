@@ -1,0 +1,14 @@
+.sideblock {
+  display: flex;
+  flex-direction: column;
+}
+
+.heading {
+  font-family: var(--type-family-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 12px;
+  font-weight: 500;
+}

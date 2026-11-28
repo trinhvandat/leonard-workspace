@@ -1,0 +1,1 @@
+export { TwoColumnReading } from "./TwoColumnReading";
