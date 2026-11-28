@@ -1,0 +1,23 @@
+.title {
+  color: var(--text-primary);
+  margin: 0 0 12px;
+}
+
+.copy {
+  color: var(--text-secondary);
+  max-width: 48ch;
+  margin-inline: 0;
+  margin-block: 0 24px;
+}
+
+.contactrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.linkPill {
+  composes: root from "../../molecules/CopyButton/CopyButton.module.css";
+  text-decoration: none;
+}

@@ -26,7 +26,8 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 | `Button` | action, accent/ghost variants | `variant`, `href?` | built |
 | `Tag` | topic chip | `href`, `label`, `count?` | built |
 | `Link` | styled internal/external link | `href`, `external?` | built |
-| `Icon` | inline SVG set (incl. sprout, maturity bars) | `name`, `size` | built |
+| `Icon` | inline SVG set (incl. sprout, maturity bars, `copy`/`github` contactrow glyphs) | `name`, `size` | built |
+| `Avatar` | gradient initial square (`.ava`) — `Hero` (46px) + `/about` head (72px) | `initial`, `size?` | built |
 | `MaturityBadge` | 🌱 seedling/budding/evergreen label+icon | `maturity` | built |
 | `HandDrawnUnderline` | emphasis underline for a word | `children` | built |
 
@@ -43,6 +44,12 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 | `TableOfContents` | in-note headings nav (no scroll-spy yet) | `headings` | built |
 | `ThemeToggle` | **client** — theme override + localStorage | — | built |
 | `FilterBar` | **client** — filter by maturity + topic | `topics`, `onChange` | planned |
+| `PageHead` | generic page head: crumb + `h1` + sub + optional media slot | `crumb`, `title`, `sub?`, `media?` | built |
+| `Panel` | card shell with mono uppercase label heading | `title` | built |
+| `SkillList` | row of non-link skill chips (`.sk`) | `skills` | built |
+| `JobEntry` | one CV entry (Experience / How I work) | `role`, `company?`, `period?`, `detail` | built |
+| `CopyButton` | **client** — copy-to-clipboard pill with transient "copied" state | `value`, `label`, `icon?` | built |
+| `CtaCard` | shared `.cta` card shell (center/start align) — consumed by `FreelanceCTA` + `ContactPanel` | `align?`, `children` | built |
 
 ## Organisms (`organisms/`)
 
@@ -50,16 +57,17 @@ Layers flow one way: `tokens → atoms → molecules → organisms → layouts �
 |---|---|---|---|
 | `SiteHeader` | nav + `ThemeToggle` | all pages | built |
 | `SiteFooter` | footer | all pages | built |
-| `Hero` | home hero | `/` | built |
+| `Hero` | home hero (refactored to consume `Avatar`) | `/` | built |
 | `WhatsGrowing` | grid of `NoteCard` (new/featured) | `/` | built |
 | `AsideExcerpt` | pulled quote (editorial constant, see `content.ts`) | `/` | built |
 | `WanderByTopic` | topic chips with counts | `/` | built |
 | `StatsStrip` | garden stats | `/` | built |
-| `FreelanceCTA` | hire/contact call-to-action | `/`, `/about` | built |
+| `FreelanceCTA` | hire/contact call-to-action (refactored to consume `CtaCard`) | `/` | built |
 | `NotePageHead` | note page head: crumb + maturity + `h1` | `/notes/[slug]` | built |
 | `NoteReadingColumn` | ~680px reading column (renders MDX) | `/notes/[slug]` | built |
 | `NoteMetaRail` | rail: MetaRow + TOC + BacklinkList | `/notes/[slug]` | built |
 | `EmptyState` | no-results / empty list | `/notes`, `/topics/[tag]` | planned |
+| `ContactPanel` | `/about` contact block: heading + copy + contactrow (github link, email/cv `CopyButton`) on `CtaCard` | `/about` | built |
 
 ## Layouts (`layouts/`)
 

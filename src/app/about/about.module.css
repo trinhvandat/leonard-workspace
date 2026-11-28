@@ -1,0 +1,29 @@
+.body {
+  padding-top: 28px;
+  padding-bottom: 48px;
+}
+
+.summaryPanel {
+  margin-bottom: 14px;
+}
+
+.summaryCopy {
+  margin: 0 0 14px;
+  color: var(--text-secondary);
+}
+
+.cvcols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 620px) {
+  .cvcols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact {
+  margin-top: 14px;
+}
