@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { Container } from "./Container";
 import styles from "./Container.module.css";
@@ -20,8 +20,20 @@ describe("Container", () => {
     expect(container.firstChild).toHaveClass(styles.reading);
   });
 
-  it("renders the given element type", () => {
-    const { container } = render(<Container as="section">child</Container>);
-    expect(container.firstChild?.nodeName).toBe("SECTION");
+  it("renders a div by default and honors the `as` override", () => {
+    const { rerender } = render(<Container>inside</Container>);
+    expect(screen.getByText("inside").tagName).toBe("DIV");
+
+    rerender(
+      <Container as="main" width="wide">
+        inside
+      </Container>,
+    );
+    expect(screen.getByText("inside").tagName).toBe("MAIN");
+  });
+
+  it("merges an extra className onto the wrapper", () => {
+    render(<Container className="extra">x</Container>);
+    expect(screen.getByText("x")).toHaveClass("extra");
   });
 });
