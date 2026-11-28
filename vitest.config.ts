@@ -39,6 +39,15 @@ export default defineConfig({
         "src/system-design/molecules/NoteCard/index.ts",
       ],
       reporter: ["text", "json-summary"],
+      // Tháp ngược — tầng Static: the ≥80% rule from CLAUDE.md / testing.md is a
+      // deterministic gate, not prose. `test:coverage` (and CI) exits non-zero
+      // when content-layer coverage regresses below this, so it fails the build.
+      thresholds: {
+        lines: 80,
+        functions: 80,
+        statements: 80,
+        branches: 80,
+      },
     },
   },
 });

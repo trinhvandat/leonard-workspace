@@ -13,7 +13,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "design-lint": "node scripts/design-lint.mjs",
+    "guard": "node scripts/structural-guard.mjs",
+    "verify": "npm run design-lint && npm run lint && npm run typecheck && npm run test:coverage && npm run guard && npm run build"
   },
   "dependencies": {
     "next": "16.4.6",

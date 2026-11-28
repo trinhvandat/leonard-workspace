@@ -1,0 +1,51 @@
+# Tháp ngược — the keystone. Every deterministic check (tầng Static) runs here
+# on each PR and push to main, so the "main is always releasable, every merge
+# deploys to Vercel" invariant is enforced, not just hoped for. A red check
+# blocks the merge.
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: verify (design-lint · lint · types · tests · guard · build)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: design-lint (no raw colors / literal fonts outside tokens)
+        run: npm run design-lint
+
+      - name: Lint (ESLint + layer boundaries)
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Tests + coverage (≥80% content layer)
+        run: npm run test:coverage
+
+      - name: Structural guard (REGISTRY ↔ components)
+        run: npm run guard
+
+      - name: Build (velite --strict + next build)
+        run: npm run build
