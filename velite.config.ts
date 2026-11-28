@@ -1,5 +1,8 @@
 import { defineConfig, defineCollection, s } from "velite";
+import rehypeShiki from "@shikijs/rehype";
+import rehypeSlug from "rehype-slug";
 import { noteFrontmatterSchema } from "./src/content/schema";
+import remarkWikiLink from "./src/content/remark-wiki-link";
 
 /**
  * Velite builds the type-safe content layer: it reads every `content/notes/*.mdx`
@@ -23,7 +26,17 @@ const notes = defineCollection({
       // Velite-derived fields (need file context — kept out of the testable schema).
       path: s.path(), // e.g. 'notes/monolith-to-microservices'
       raw: s.raw(), // untouched MDX body — feeds the [[wiki-link]] backlink graph
-      body: s.mdx(), // compiled MDX for later rendering
+      // Compiled MDX for rendering. Plugins run at build time (zero client JS):
+      //  - remarkWikiLink rewrites [[slug]] → <WikiLink slug="..."/> (render seam)
+      //  - rehypeSlug stamps h2/h3 with ids matching extractToc() (toc.ts)
+      //  - rehypeShiki highlights fenced code with dual light/dark themes
+      body: s.mdx({
+        remarkPlugins: [remarkWikiLink],
+        rehypePlugins: [
+          rehypeSlug,
+          [rehypeShiki, { themes: { light: "github-light", dark: "github-dark" } }],
+        ],
+      }),
     })
     .transform((data) => ({
       ...data,
