@@ -1,0 +1,28 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--type-family-mono);
+  font-size: 12.5px;
+  cursor: pointer;
+  background: var(--surface-card);
+  border: 1px solid var(--border-strong);
+  border-radius: 11px;
+  padding: 10px 15px;
+  color: var(--text-primary);
+  box-shadow: var(--elevation-sm);
+  transition: border-color 0.15s ease;
+}
+
+.root:hover {
+  border-color: var(--color-attention);
+}
+
+.root:focus-visible {
+  outline: var(--focus-ring-width) solid var(--focus-ring-color);
+  outline-offset: var(--focus-ring-offset);
+}
+
+.icon {
+  color: var(--text-muted);
+}

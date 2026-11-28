@@ -1,0 +1,54 @@
+.root {
+  padding-top: 52px;
+  padding-bottom: 10px;
+}
+
+.crumb {
+  font-family: var(--type-family-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 14px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.crumbItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.crumbLink {
+  color: var(--text-muted);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.crumbLink:hover {
+  color: var(--color-attention-ink);
+}
+
+.sep {
+  opacity: 0.5;
+}
+
+.hero {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.title {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.sub {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 56ch;
+  margin: 0;
+}
