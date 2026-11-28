@@ -38,4 +38,12 @@ describe("Icon", () => {
     const { container } = render(<Icon name={"nope" as IconName} />);
     expect(container.querySelector("svg")).toBeNull();
   });
+
+  it("renders the document and link glyphs used by the section-mini headings", () => {
+    const { container: doc } = render(<Icon name="document" size={17} />);
+    expect(doc.querySelector("svg")).toHaveAttribute("width", "17");
+
+    const { container: link } = render(<Icon name="link" size={17} />);
+    expect(link.querySelector("svg")).not.toBeNull();
+  });
 });

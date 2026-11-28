@@ -1,0 +1,139 @@
+/*
+ * The `.prose` ruleset — the compiled MDX body's container. Styles raw MDX
+ * elements (h2/h3/p/ul/li/code/pre) directly by descendant selector, so
+ * `mdxComponents.tsx` doesn't need to override them. Translated verbatim
+ * from the prototype's note-detail CSS (see
+ * `docs/plans/note-detail.md` §note-screen-reference) — raw vars swapped for
+ * the semantic layer per the design-system skill's mapping table.
+ *
+ * Literal px font-sizes here match the prototype exactly; design-lint only
+ * blocks raw color/font-family, not px, and these are raw MDX elements, not
+ * `Text` atom consumers.
+ */
+
+.prose {
+  max-width: none;
+}
+
+.prose p {
+  font-size: 18px;
+  color: var(--text-primary);
+  margin: 0 0 20px;
+  line-height: 1.66;
+}
+
+.prose h2 {
+  font-family: var(--type-family-display);
+  font-weight: 700;
+  font-size: 25px;
+  letter-spacing: -0.02em;
+  margin: 38px 0 14px;
+  color: var(--text-primary);
+  scroll-margin-top: 90px;
+}
+
+.prose h3 {
+  font-family: var(--type-family-display);
+  font-weight: 600;
+  font-size: 20px;
+  margin: 30px 0 10px;
+  color: var(--text-primary);
+}
+
+.prose ul {
+  margin: 0 0 20px;
+  padding-left: 22px;
+}
+
+.prose li {
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.prose code {
+  font-family: var(--type-family-mono);
+  font-size: 0.86em;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 6px;
+  color: var(--color-highlight-ink);
+}
+
+.prose pre {
+  margin: 0 0 22px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: var(--type-family-mono);
+  font-size: 12.5px;
+  line-height: 1.78;
+  color: var(--text-secondary);
+}
+
+.prose pre code {
+  background: none;
+  border: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Shiki emits its own <pre class="shiki ..."> with inline light styles and a
+   `--shiki-dark`/`--shiki-dark-bg` custom-property pair for dark mode (see
+   velite.config.ts: dual `github-light`/`github-dark` themes). Let Shiki's
+   own background/color win over `.prose pre` above in BOTH themes, and flip
+   to the dark pair the same two ways every other theme switch in this repo
+   does (prefers-color-scheme, escaped by a manual light override, and the
+   manual dark override) — see tokens/themes.css for the identical pattern. */
+/* NOTE: `shiki` is Shiki's own global class — it must be wrapped in :global()
+   or CSS Modules hashes it and none of these overrides match the real markup
+   (dark mode would then fall back to the light theme). */
+:global(pre.shiki),
+:global(pre.shiki code) {
+  background: var(--surface-raised) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :global(:root:not([data-theme="light"]) pre.shiki),
+  :global(:root:not([data-theme="light"]) pre.shiki span) {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+  }
+}
+
+:global(:root[data-theme="dark"] pre.shiki),
+:global(:root[data-theme="dark"] pre.shiki span) {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+/* Dotted wiki-link (`.wl` in the prototype). */
+.wl {
+  color: var(--color-accent-ink);
+  text-decoration: none;
+  border-bottom: 1.5px dotted var(--color-accent);
+  cursor: pointer;
+}
+
+.wl:hover {
+  background: var(--color-accent-soft);
+}
+
+/* `blockquote` → the prototype's berry `.callout` card (D5 — no notes use it
+   yet; kept ready for a future `> ...`). */
+.callout {
+  background: var(--color-highlight-soft);
+  border: 1px solid color-mix(in srgb, var(--color-highlight) 30%, transparent);
+  border-left: 3px solid var(--color-highlight);
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin: 0 0 22px;
+}
+
+.callout p {
+  margin: 0;
+  font-size: 16px;
+  color: var(--text-secondary);
+}

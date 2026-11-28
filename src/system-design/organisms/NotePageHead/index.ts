@@ -1,0 +1,1 @@
+export { NotePageHead } from "./NotePageHead";

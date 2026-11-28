@@ -1,0 +1,20 @@
+.root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 3px;
+}
+
+.chip {
+  text-decoration: none;
+  background: var(--color-accent-soft);
+  padding: 3px 9px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+/* Color lives on the inner text, not the anchor, so the Link atom's
+   `color: inherit` can't win at equal specificity and grey out the pill. */
+.chipText {
+  color: var(--color-accent-ink);
+}
