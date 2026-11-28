@@ -32,6 +32,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # Generate the Velite content layer (#site/content) BEFORE typecheck and
+      # tests — tsc checks src/content/index.ts which imports the generated
+      # types, so they must exist first. `build` regenerates it (harmless).
+      - name: Generate content layer (velite --strict)
+        run: npm run content
+
       - name: design-lint (no raw colors / literal fonts outside tokens)
         run: npm run design-lint
 
