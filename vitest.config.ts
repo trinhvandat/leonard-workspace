@@ -28,11 +28,16 @@ export default defineConfig({
       provider: "v8",
       include: [
         "src/content/**/*.ts",
-        "src/system-design/molecules/NoteCard/**/*.ts",
-        "src/system-design/molecules/NoteCard/**/*.tsx",
-        // Atoms are backfilled with tests (REGISTRY built = tested); measure
-        // them so they stay covered, not merely accompanied by a test file.
+        // Every built component layer is tested (REGISTRY built = tested,
+        // enforced by structural-guard); measure them all so they stay covered,
+        // not merely accompanied by a test file. (test files + barrel index.ts
+        // are excluded below.)
         "src/system-design/atoms/**/*.tsx",
+        "src/system-design/molecules/**/*.ts",
+        "src/system-design/molecules/**/*.tsx",
+        "src/system-design/organisms/**/*.ts",
+        "src/system-design/organisms/**/*.tsx",
+        "src/system-design/layouts/**/*.tsx",
       ],
       exclude: [
         "src/content/**/*.test.ts",
