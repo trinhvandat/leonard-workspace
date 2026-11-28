@@ -30,13 +30,16 @@ export default defineConfig({
         "src/content/**/*.ts",
         "src/system-design/molecules/NoteCard/**/*.ts",
         "src/system-design/molecules/NoteCard/**/*.tsx",
+        // Atoms are backfilled with tests (REGISTRY built = tested); measure
+        // them so they stay covered, not merely accompanied by a test file.
+        "src/system-design/atoms/**/*.tsx",
       ],
       exclude: [
         "src/content/**/*.test.ts",
         "src/content/index.ts",
         "src/content/fixtures.ts",
-        "src/system-design/molecules/NoteCard/**/*.test.tsx",
-        "src/system-design/molecules/NoteCard/index.ts",
+        "src/system-design/**/*.test.tsx",
+        "src/system-design/**/index.ts",
       ],
       reporter: ["text", "json-summary"],
       // Tháp ngược — tầng Static: the ≥80% rule from CLAUDE.md / testing.md is a
