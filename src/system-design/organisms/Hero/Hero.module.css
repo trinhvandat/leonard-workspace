@@ -40,21 +40,6 @@
   border: 1px solid var(--border);
 }
 
-.avatar {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 46px;
-  height: 46px;
-  border-radius: 13px;
-  flex-shrink: 0;
-  font-family: var(--type-family-display);
-  font-weight: 700;
-  font-size: 21px;
-  color: var(--surface-page);
-  background: linear-gradient(142deg, var(--color-accent), var(--color-highlight));
-}
-
 .name {
   color: var(--text-primary);
   font-weight: 500;

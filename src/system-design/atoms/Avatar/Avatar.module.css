@@ -1,0 +1,14 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  border-radius: calc(var(--avatar-size) * 0.27);
+  font-family: var(--type-family-display);
+  font-weight: 700;
+  font-size: calc(var(--avatar-size) * 0.46);
+  color: var(--surface-page);
+  background: linear-gradient(142deg, var(--color-accent), var(--color-highlight));
+}

@@ -1,0 +1,15 @@
+.root {
+  padding: 40px 32px;
+  border-radius: 18px;
+  background: var(--surface-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--elevation-md);
+}
+
+.center {
+  text-align: center;
+}
+
+.start {
+  text-align: left;
+}

@@ -8,7 +8,9 @@ export type IconName =
   | "maturity-budding"
   | "maturity-evergreen"
   | "document"
-  | "link";
+  | "link"
+  | "copy"
+  | "github";
 
 /** Bars filled (of 3) for each maturity stage's bar-chart glyph. */
 const maturityBarsFilled: Record<
@@ -54,8 +56,10 @@ interface IconProps extends Omit<SVGProps<SVGSVGElement>, "name"> {
 
 /**
  * Inline SVG icon set. `sprout` is the garden logo mark (from the approved
- * prototype); `sun`/`moon` are the theme-toggle glyphs. All strokes use
- * `currentColor` so color comes from CSS (e.g. `color: var(--color-accent)`).
+ * prototype); `sun`/`moon` are the theme-toggle glyphs; `copy` and `github`
+ * are the `/about` contactrow glyphs (`github` is filled, not stroked). All
+ * strokes use `currentColor` so color comes from CSS (e.g.
+ * `color: var(--color-accent)`).
  */
 export function Icon({ name, size = 16, ...rest }: IconProps) {
   const common = {
@@ -148,6 +152,28 @@ export function Icon({ name, size = 16, ...rest }: IconProps) {
         >
           <path d="M10 14a4 4 0 0 1 0-5.66l2-2a4 4 0 0 1 5.66 5.66l-1 1" />
           <path d="M14 10a4 4 0 0 1 0 5.66l-2 2a4 4 0 0 1-5.66-5.66l1-1" />
+        </svg>
+      );
+    case "copy":
+      return (
+        <svg
+          {...common}
+          stroke="currentColor"
+          strokeWidth="1.8"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <rect x="9" y="9" width="11" height="11" rx="2" />
+          <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+        </svg>
+      );
+    case "github":
+      return (
+        <svg {...common}>
+          <path
+            fill="currentColor"
+            d="M12 2a10 10 0 0 0-3.2 19.5c.5.1.7-.2.7-.5v-1.7c-2.8.6-3.4-1.3-3.4-1.3-.5-1.2-1.1-1.5-1.1-1.5-.9-.6.1-.6.1-.6 1 .1 1.5 1 1.5 1 .9 1.5 2.3 1.1 2.9.8.1-.6.3-1.1.6-1.3-2.2-.3-4.6-1.1-4.6-5a4 4 0 0 1 1-2.7c-.1-.3-.4-1.3.1-2.6 0 0 .8-.3 2.7 1a9.3 9.3 0 0 1 5 0c1.9-1.3 2.7-1 2.7-1 .5 1.3.2 2.3.1 2.6a4 4 0 0 1 1 2.7c0 3.9-2.3 4.7-4.6 5 .4.3.7.9.7 1.8v2.6c0 .3.2.6.7.5A10 10 0 0 0 12 2Z"
+          />
         </svg>
       );
     default:

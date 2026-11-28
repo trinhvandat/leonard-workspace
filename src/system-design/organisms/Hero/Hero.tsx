@@ -1,3 +1,4 @@
+import { Avatar } from "@/system-design/atoms/Avatar";
 import { HandDrawnUnderline } from "@/system-design/atoms/HandDrawnUnderline";
 import { Text } from "@/system-design/atoms/Text";
 import styles from "./Hero.module.css";
@@ -27,9 +28,7 @@ export function Hero() {
       </Text>
 
       <div className={styles.introCard}>
-        <span className={styles.avatar} aria-hidden="true">
-          L
-        </span>
+        <Avatar initial="L" />
         <div>
           <Text as="p" variant="body" size="name" className={styles.name}>
             Leonard

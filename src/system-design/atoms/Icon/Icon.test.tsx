@@ -46,4 +46,12 @@ describe("Icon", () => {
     const { container: link } = render(<Icon name="link" size={17} />);
     expect(link.querySelector("svg")).not.toBeNull();
   });
+
+  it("renders the contactrow glyphs without throwing", () => {
+    const { container: copy } = render(<Icon name="copy" />);
+    expect(copy.querySelector("svg")).not.toBeNull();
+
+    const { container: github } = render(<Icon name="github" />);
+    expect(github.querySelector("svg")).not.toBeNull();
+  });
 });
