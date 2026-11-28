@@ -3,6 +3,8 @@ import rehypeShiki from "@shikijs/rehype";
 import rehypeSlug from "rehype-slug";
 import { noteFrontmatterSchema } from "./src/content/schema";
 import remarkWikiLink from "./src/content/remark-wiki-link";
+import { aboutData } from "./src/content/about";
+import { aboutSchema } from "./src/content/about.schema";
 
 /**
  * Velite builds the type-safe content layer: it reads every `content/notes/*.mdx`
@@ -49,4 +51,13 @@ export default defineConfig({
   root: "content",
   strict: true,
   collections: { notes },
+  // `/about`'s data module (`src/content/about.ts`) is plain TS with no
+  // runtime validation, so its page bundle stays free of velite's
+  // esbuild/sharp toolchain. To preserve "fail the build on bad data" for
+  // that page without pulling velite into the Next page graph, validate it
+  // here instead — this hook runs in velite's own Node process as part of
+  // `velite build --strict` (i.e. `npm run build` / `npm run content`).
+  prepare: () => {
+    aboutSchema.parse(aboutData);
+  },
 });
