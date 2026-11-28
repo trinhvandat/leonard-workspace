@@ -12,11 +12,17 @@ import { defineConfig } from "vitest/config";
  * `wiki-links`, `derive`); the Velite-data wiring in `index.ts` is excluded
  * because it can only run after a Velite build and is exercised by
  * `next build`, not by unit tests.
+ *
+ * `#site/content` is Velite's generated-data alias (see `velite.config.ts` /
+ * `tsconfig.json`): Next's webpack/Turbopack resolve it automatically, but
+ * Vite needs it spelled out so component tests that go through `@/content`
+ * (e.g. the MDX bridge) can run against the real build output in `.velite/`.
  */
 export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "#site/content": path.resolve(__dirname, "./.velite"),
     },
   },
   test: {
