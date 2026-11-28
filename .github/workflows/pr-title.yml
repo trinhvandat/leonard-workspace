@@ -1,0 +1,45 @@
+# Tháp ngược — tầng Static: the Conventional Commits rule (git-flow skill) as a
+# deterministic gate. Squash-merge uses the PR *title* as the commit subject, so
+# validating the title is what keeps `main`'s history conventional — no husky,
+# no per-commit friction on local branches.
+#
+# First-party only: the title is checked by an inline regex, not a third-party
+# action. The title is passed through `env` (never interpolated into the shell)
+# so a crafted title can't inject commands.
+name: PR title
+
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  conventional-title:
+    name: Conventional Commit title
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate PR title
+        env:
+          TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          echo "PR title: $TITLE"
+
+          # <type>(optional-scope)!: <description starting lowercase/digit>
+          # Types mirror the git-flow skill exactly.
+          pattern='^(feat|fix|refactor|docs|test|chore|perf|ci)(\([a-z0-9][a-z0-9-]*\))?!?: [a-z0-9].*$'
+
+          if ! printf '%s' "$TITLE" | grep -Eq "$pattern"; then
+            echo "::error::PR title must be a Conventional Commit — <type>(optional-scope): <lowercase description>"
+            echo "Allowed types: feat, fix, refactor, docs, test, chore, perf, ci"
+            echo "Example: feat(content): derive backlinks from wiki-links"
+            exit 1
+          fi
+
+          if printf '%s' "$TITLE" | grep -Eq '[.]$'; then
+            echo "::error::Drop the trailing period from the PR title."
+            exit 1
+          fi
+
+          echo "OK — Conventional Commit title."
